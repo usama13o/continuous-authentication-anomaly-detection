@@ -14,9 +14,14 @@ The siamese network is a neural network that takes two inputs and outputs a simi
 
 The one class SVM is a machine learning algorithm that is used to detect anomalies. 
 
+### Results
 
+![png](Training_siamese_OCSVM_HMOG__files/Training_siamese_OCSVM_HMOG__13_15.png)
 
-
+![png](Training_siamese_OCSVM_HMOG__files/Training_siamese_OCSVM_HMOG__25_5.png)
+    
+![png](Training_siamese_OCSVM_HMOG__files/Training_siamese_OCSVM_HMOG__17_1.png)
+    
 ```python
 # Standard
 from pathlib import Path
@@ -987,79 +992,6 @@ plt.show()
     
 ![png](Training_siamese_OCSVM_HMOG__files/Training_siamese_OCSVM_HMOG__13_15.png)
     
-
-
-
-    ---------------------------------------------------------------------------
-
-    OSError                                   Traceback (most recent call last)
-
-    <ipython-input-13-086069d1003c> in <module>()
-         28 )
-         29 
-    ---> 30 model.save(f'data_hapt/sia_model_-{model_variant}-{min_window}.h5')
-         31 
-         32 print("Training History:")
-    
-
-    /usr/local/lib/python3.6/dist-packages/keras/engine/network.py in save(self, filepath, overwrite, include_optimizer)
-       1150             raise NotImplementedError
-       1151         from ..models import save_model
-    -> 1152         save_model(self, filepath, overwrite, include_optimizer)
-       1153 
-       1154     @saving.allow_write_to_gcs
-    
-
-    /usr/local/lib/python3.6/dist-packages/keras/engine/saving.py in save_wrapper(obj, filepath, overwrite, *args, **kwargs)
-        447                 os.remove(tmp_filepath)
-        448         else:
-    --> 449             save_function(obj, filepath, overwrite, *args, **kwargs)
-        450 
-        451     return save_wrapper
-    
-
-    /usr/local/lib/python3.6/dist-packages/keras/engine/saving.py in save_model(model, filepath, overwrite, include_optimizer)
-        538             if not proceed:
-        539                 return
-    --> 540         with H5Dict(filepath, mode='w') as h5dict:
-        541             _serialize_model(model, h5dict, include_optimizer)
-        542     elif hasattr(filepath, 'write') and callable(filepath.write):
-    
-
-    /usr/local/lib/python3.6/dist-packages/keras/utils/io_utils.py in __init__(self, path, mode)
-        189             self._is_file = False
-        190         elif isinstance(path, six.string_types) or _is_path_instance(path):
-    --> 191             self.data = h5py.File(path, mode=mode)
-        192             self._is_file = True
-        193         elif isinstance(path, dict):
-    
-
-    /usr/local/lib/python3.6/dist-packages/h5py/_hl/files.py in __init__(self, name, mode, driver, libver, userblock_size, swmr, rdcc_nslots, rdcc_nbytes, rdcc_w0, track_order, **kwds)
-        406                 fid = make_fid(name, mode, userblock_size,
-        407                                fapl, fcpl=make_fcpl(track_order=track_order),
-    --> 408                                swmr=swmr)
-        409 
-        410             if isinstance(libver, tuple):
-    
-
-    /usr/local/lib/python3.6/dist-packages/h5py/_hl/files.py in make_fid(name, mode, userblock_size, fapl, fcpl, swmr)
-        177         fid = h5f.create(name, h5f.ACC_EXCL, fapl=fapl, fcpl=fcpl)
-        178     elif mode == 'w':
-    --> 179         fid = h5f.create(name, h5f.ACC_TRUNC, fapl=fapl, fcpl=fcpl)
-        180     elif mode == 'a':
-        181         # Open in append mode (read/write).
-    
-
-    h5py/_objects.pyx in h5py._objects.with_phil.wrapper()
-    
-
-    h5py/_objects.pyx in h5py._objects.with_phil.wrapper()
-    
-
-    h5py/h5f.pyx in h5py.h5f.create()
-    
-
-    OSError: Unable to create file (unable to open file: name = 'data_hapt/sia_model_-2d-425.h5', errno = 2, error message = 'No such file or directory', flags = 13, o_flags = 242)
 
 
 
